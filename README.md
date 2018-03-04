@@ -8,7 +8,7 @@ We specifically target a comprehensive set of tasks that have been repeatedly us
 Experiments are done in PyTorch. If you find this repository helpful, please cite our work:
 
 ```
-@article{Zhou2018,
+@article{BaiTCN2018,
 	author    = {Shaojie Bai and J. Zico Kolter and Vladlen Koltun},
 	title     = {An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling},
 	journal   = {arXiv:XXXX.XXXXX},
