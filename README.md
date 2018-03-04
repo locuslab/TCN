@@ -1,4 +1,4 @@
-# Sequence-Model-Benchmarks-TCN
+# Sequence Modeling Benchmarks and Temporal Convolutional Networks (TCN)
 
 
 This repository contains the experiments done in the work [An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling](#) by Shaojie Bai, J. Zico Kolter and Vladlen Koltun.
@@ -21,7 +21,6 @@ This repository contains the benchmarks to the following tasks, with details exp
   - **Wikitext-103** [LARGE] word-level LM
   - **LAMBADA** [LARGE] word-level LM and textual understanding
   - **PennTreebank** [MEDIUM] char-level LM
-  - **Shakespeare** [SMALL] char-level LM (Note: a small dataset)
   - **text8** [LARGE] char-level LM
 
 While some of the large datasets are not included in this repo, we use the [observations](#) package to download them, which can be easily installed using pip. 
