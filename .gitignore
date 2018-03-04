@@ -1,5 +1,6 @@
 .DS_Store/
-data/
+lambada/
+wikitext-103/
 *.pt
 *.log
 *.pyc
