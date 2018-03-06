@@ -1,7 +1,7 @@
 # Sequence Modeling Benchmarks and Temporal Convolutional Networks (TCN)
 
 
-This repository contains the experiments done in the work [An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling](#) by Shaojie Bai, J. Zico Kolter and Vladlen Koltun.
+This repository contains the experiments done in the work [An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling](https://arxiv.org/abs/1803.01271) by Shaojie Bai, J. Zico Kolter and Vladlen Koltun.
 
 We specifically target a comprehensive set of tasks that have been repeatedly used to compare the effectiveness of different recurrent networks, and evaluate a simple, generic but powerful (purely) convolutional network on the recurrent nets' home turf.
 
@@ -11,7 +11,7 @@ Experiments are done in PyTorch. If you find this repository helpful, please cit
 @article{BaiTCN2018,
 	author    = {Shaojie Bai and J. Zico Kolter and Vladlen Koltun},
 	title     = {An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling},
-	journal   = {arXiv:XXXX.XXXXX},
+	journal   = {arXiv:1803.01271},
 	year      = {2018},
 }
 ```
@@ -32,7 +32,7 @@ This repository contains the benchmarks to the following tasks, with details exp
   - **PennTreebank** [MEDIUM] char-level LM
   - **text8** [LARGE] char-level LM
 
-While some of the large datasets are not included in this repo, we use the [observations](#) package to download them, which can be easily installed using pip. 
+While some of the large datasets are not included in this repo, we use the [observations](https://github.com/edwardlib/observations) package to download them, which can be easily installed using pip. 
 
 ## Usage
 
