@@ -21,15 +21,15 @@ parser.add_argument('--cuda', action='store_false',
 parser.add_argument('--dropout', type=float, default=0.1,
                     help='dropout applied to layers (default: 0.1)')
 parser.add_argument('--emb_dropout', type=float, default=0.1,
-                    help='dropout applied to the embedded layer (0 = no dropout)')
+                    help='dropout applied to the embedded layer (0 = no dropout) (default: 0.1)')
 parser.add_argument('--clip', type=float, default=0.15,
                     help='gradient clip, -1 means no clip (default: 0.15)')
 parser.add_argument('--epochs', type=int, default=100,
                     help='upper epoch limit (default: 100)')
 parser.add_argument('--ksize', type=int, default=3,
-                    help='kernel size (default: 5)')
+                    help='kernel size (default: 3)')
 parser.add_argument('--levels', type=int, default=3,
-                    help='# of levels (default: 4)')
+                    help='# of levels (default: 3)')
 parser.add_argument('--log-interval', type=int, default=100, metavar='N',
                     help='report interval (default: 100')
 parser.add_argument('--lr', type=float, default=4,
@@ -39,7 +39,7 @@ parser.add_argument('--emsize', type=int, default=100,
 parser.add_argument('--optim', type=str, default='SGD',
                     help='optimizer to use (default: SGD)')
 parser.add_argument('--nhid', type=int, default=450,
-                    help='number of hidden units per layer (default: 150)')
+                    help='number of hidden units per layer (default: 450)')
 parser.add_argument('--validseqlen', type=int, default=320,
                     help='valid sequence length (default: 320)')
 parser.add_argument('--seq_len', type=int, default=400,
