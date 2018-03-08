@@ -25,13 +25,13 @@ parser.add_argument('--ksize', type=int, default=8,
 parser.add_argument('--iters', type=int, default=100,
                     help='number of iters per epoch (default: 100)')
 parser.add_argument('--levels', type=int, default=8,
-                    help='# of levels (default: 5)')
+                    help='# of levels (default: 8)')
 parser.add_argument('--blank_len', type=int, default=1000, metavar='N',
                     help='The size of the blank (i.e. T) (default: 1000)')
 parser.add_argument('--seq_len', type=int, default=10,
                     help='initial history size (default: 10)')
 parser.add_argument('--log-interval', type=int, default=50, metavar='N',
-                    help='report interval (default: 10')
+                    help='report interval (default: 50')
 parser.add_argument('--lr', type=float, default=5e-4,
                     help='initial learning rate (default: 5e-4)')
 parser.add_argument('--optim', type=str, default='RMSprop',
