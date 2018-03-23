@@ -106,7 +106,8 @@ def train(ep):
 
         x = train_x[start_ind:end_ind]
         y = train_y[start_ind:end_ind]
-
+        
+        optimizer.zero_grad()
         out = model(x.unsqueeze(1).contiguous())
         loss = criterion(out.view(-1, n_classes), y.view(-1))
         pred = out.view(-1, n_classes).data.max(1, keepdim=True)[1]
