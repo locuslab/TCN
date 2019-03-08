@@ -92,23 +92,24 @@ def evaluate(data_source):
     model.eval()
     total_loss = 0
     processed_data_size = 0
-    for i in range(0, data_source.size(1) - 1, args.validseqlen):
-        if i + args.seq_len - args.validseqlen >= data_source.size(1) - 1:
-            continue
-        data, targets = get_batch(data_source, i, args, evaluation=True)
-        output = model(data)
+    with torch.no_grad():
+        for i in range(0, data_source.size(1) - 1, args.validseqlen):
+            if i + args.seq_len - args.validseqlen >= data_source.size(1) - 1:
+                continue
+            data, targets = get_batch(data_source, i, args, evaluation=True)
+            output = model(data)
 
-        # Discard the effective history, just like in training
-        eff_history = args.seq_len - args.validseqlen
-        final_output = output[:, eff_history:].contiguous().view(-1, n_words)
-        final_target = targets[:, eff_history:].contiguous().view(-1)
+            # Discard the effective history, just like in training
+            eff_history = args.seq_len - args.validseqlen
+            final_output = output[:, eff_history:].contiguous().view(-1, n_words)
+            final_target = targets[:, eff_history:].contiguous().view(-1)
 
-        loss = criterion(final_output, final_target)
+            loss = criterion(final_output, final_target)
 
-        # Note that we don't add TAR loss here
-        total_loss += (data.size(1) - eff_history) * loss.item()
-        processed_data_size += data.size(1) - eff_history
-    return total_loss / processed_data_size
+            # Note that we don't add TAR loss here
+            total_loss += (data.size(1) - eff_history) * loss.item()
+            processed_data_size += data.size(1) - eff_history
+        return total_loss / processed_data_size
 
 
 def train():

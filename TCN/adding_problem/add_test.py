@@ -100,10 +100,11 @@ def train(epoch):
 
 def evaluate():
     model.eval()
-    output = model(X_test)
-    test_loss = F.mse_loss(output, Y_test)
-    print('\nTest set: Average loss: {:.6f}\n'.format(test_loss.item()))
-    return test_loss.item()
+    with torch.no_grad():
+        output = model(X_test)
+        test_loss = F.mse_loss(output, Y_test)
+        print('\nTest set: Average loss: {:.6f}\n'.format(test_loss.item()))
+        return test_loss.item()
 
 
 for ep in range(1, epochs+1):

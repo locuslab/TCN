@@ -85,14 +85,15 @@ optimizer = getattr(optim, args.optim)(model.parameters(), lr=lr)
 
 def evaluate():
     model.eval()
-    out = model(test_x.unsqueeze(1).contiguous())
-    loss = criterion(out.view(-1, n_classes), test_y.view(-1))
-    pred = out.view(-1, n_classes).data.max(1, keepdim=True)[1]
-    correct = pred.eq(test_y.data.view_as(pred)).cpu().sum()
-    counter = out.view(-1, n_classes).size(0)
-    print('\nTest set: Average loss: {:.8f}  |  Accuracy: {:.4f}\n'.format(
-        loss.item(), 100. * correct / counter))
-    return loss.item()
+    with torch.no_grad():
+        out = model(test_x.unsqueeze(1).contiguous())
+        loss = criterion(out.view(-1, n_classes), test_y.view(-1))
+        pred = out.view(-1, n_classes).data.max(1, keepdim=True)[1]
+        correct = pred.eq(test_y.data.view_as(pred)).cpu().sum()
+        counter = out.view(-1, n_classes).size(0)
+        print('\nTest set: Average loss: {:.8f}  |  Accuracy: {:.4f}\n'.format(
+            loss.item(), 100. * correct / counter))
+        return loss.item()
 
 
 def train(ep):

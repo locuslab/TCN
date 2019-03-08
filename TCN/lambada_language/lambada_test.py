@@ -88,18 +88,19 @@ def evaluate(data_source):
     total_loss = 0
     processed_data_size = 0
     correct = 0
-    for i in range(len(data_source)):
-        data, targets = torch.LongTensor(data_source[i]).view(1, -1), torch.LongTensor([data_source[i][-1]]).view(1, -1)
-        data, targets = Variable(data), Variable(targets)
-        if args.cuda:
-            data, targets = data.cuda(), targets.cuda()
-        output = model(data)
-        final_output = output[:, -1].contiguous().view(-1, n_words)
-        final_target = targets[:, -1].contiguous().view(-1)
-        loss = criterion(final_output, final_target)
-        total_loss += loss.data
-        processed_data_size += 1
-    return total_loss.item() / processed_data_size
+    with torch.no_grad():
+        for i in range(len(data_source)):
+            data, targets = torch.LongTensor(data_source[i]).view(1, -1), torch.LongTensor([data_source[i][-1]]).view(1, -1)
+            data, targets = Variable(data), Variable(targets)
+            if args.cuda:
+                data, targets = data.cuda(), targets.cuda()
+            output = model(data)
+            final_output = output[:, -1].contiguous().view(-1, n_words)
+            final_target = targets[:, -1].contiguous().view(-1)
+            loss = criterion(final_output, final_target)
+            total_loss += loss.data
+            processed_data_size += 1
+        return total_loss.item() / processed_data_size
 
 
 def train():

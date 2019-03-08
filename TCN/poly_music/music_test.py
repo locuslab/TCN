@@ -68,19 +68,20 @@ def evaluate(X_data, name='Eval'):
     eval_idx_list = np.arange(len(X_data), dtype="int32")
     total_loss = 0.0
     count = 0
-    for idx in eval_idx_list:
-        data_line = X_data[idx]
-        x, y = Variable(data_line[:-1]), Variable(data_line[1:])
-        if args.cuda:
-            x, y = x.cuda(), y.cuda()
-        output = model(x.unsqueeze(0)).squeeze(0)
-        loss = -torch.trace(torch.matmul(y, torch.log(output).float().t()) +
-                            torch.matmul((1-y), torch.log(1-output).float().t()))
-        total_loss += loss.item()
-        count += output.size(0)
-    eval_loss = total_loss / count
-    print(name + " loss: {:.5f}".format(eval_loss))
-    return eval_loss
+    with torch.no_grad():
+        for idx in eval_idx_list:
+            data_line = X_data[idx]
+            x, y = Variable(data_line[:-1]), Variable(data_line[1:])
+            if args.cuda:
+                x, y = x.cuda(), y.cuda()
+            output = model(x.unsqueeze(0)).squeeze(0)
+            loss = -torch.trace(torch.matmul(y, torch.log(output).float().t()) +
+                                torch.matmul((1-y), torch.log(1-output).float().t()))
+            total_loss += loss.item()
+            count += output.size(0)
+        eval_loss = total_loss / count
+        print(name + " loss: {:.5f}".format(eval_loss))
+        return eval_loss
 
 
 def train(ep):
