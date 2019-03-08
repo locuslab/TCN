@@ -4,6 +4,8 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.autograd import Variable
 import numpy as np
+import sys
+sys.path.append("../../")
 from TCN.copy_memory.utils import data_generator
 from TCN.copy_memory.model import TCN
 import time
@@ -89,8 +91,8 @@ def evaluate():
     correct = pred.eq(test_y.data.view_as(pred)).cpu().sum()
     counter = out.view(-1, n_classes).size(0)
     print('\nTest set: Average loss: {:.8f}  |  Accuracy: {:.4f}\n'.format(
-        loss.data[0], 100. * correct / counter))
-    return loss.data[0]
+        loss.item(), 100. * correct / counter))
+    return loss.item()
 
 
 def train(ep):
@@ -114,10 +116,10 @@ def train(ep):
         correct += pred.eq(y.data.view_as(pred)).cpu().sum()
         counter += out.view(-1, n_classes).size(0)
         if args.clip > 0:
-            torch.nn.utils.clip_grad_norm(model.parameters(), args.clip)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
         loss.backward()
         optimizer.step()
-        total_loss += loss
+        total_loss += loss.item()
 
         if batch_idx > 0 and batch_idx % args.log_interval == 0:
             avg_loss = total_loss / args.log_interval
@@ -125,7 +127,7 @@ def train(ep):
             print('| Epoch {:3d} | {:5d}/{:5d} batches | lr {:2.5f} | ms/batch {:5.2f} | '
                   'loss {:5.8f} | accuracy {:5.4f}'.format(
                 ep, batch_idx, n_train // batch_size+1, args.lr, elapsed * 1000 / args.log_interval,
-                avg_loss.data[0], 100. * correct / counter))
+                avg_loss, 100. * correct / counter))
             start_time = time.time()
             total_loss = 0
             correct = 0

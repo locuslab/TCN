@@ -99,7 +99,7 @@ def evaluate(data_source):
         loss = criterion(final_output, final_target)
         total_loss += loss.data
         processed_data_size += 1
-    return total_loss[0] / processed_data_size
+    return total_loss.item() / processed_data_size
 
 
 def train():
@@ -121,12 +121,12 @@ def train():
         loss = criterion(final_output, final_target)
         loss.backward()
         if args.clip > 0:
-            torch.nn.utils.clip_grad_norm(model.parameters(), args.clip)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
         optimizer.step()
-        total_loss += loss.data
+        total_loss += loss.item()
 
         if batch_idx % args.log_interval == 0 and batch_idx > 0:
-            cur_loss = total_loss[0] / args.log_interval
+            cur_loss = total_loss / args.log_interval
             elapsed = time.time() - start_time
             print('| epoch {:3d} | {:5d}/{:5d} batches | lr {:02.5f} | ms/batch {:5.5f} | '
                   'loss {:5.2f} | ppl {:8.2f}'.format(

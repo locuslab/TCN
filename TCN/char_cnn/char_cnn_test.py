@@ -88,21 +88,22 @@ def evaluate(source):
     total_loss = 0
     count = 0
     source_len = source.size(1)
-    for batch, i in enumerate(range(0, source_len - 1, args.validseqlen)):
-        if i + args.seq_len - args.validseqlen >= source_len:
-            continue
-        inp, target = get_batch(source, i, args)
-        output = model(inp)
-        eff_history = args.seq_len - args.validseqlen
-        final_output = output[:, eff_history:].contiguous().view(-1, n_characters)
-        final_target = target[:, eff_history:].contiguous().view(-1)
-        loss = criterion(final_output, final_target)
+    with torch.no_grad():
+        for batch, i in enumerate(range(0, source_len - 1, args.validseqlen)):
+            if i + args.seq_len - args.validseqlen >= source_len:
+                continue
+            inp, target = get_batch(source, i, args)
+            output = model(inp)
+            eff_history = args.seq_len - args.validseqlen
+            final_output = output[:, eff_history:].contiguous().view(-1, n_characters)
+            final_target = target[:, eff_history:].contiguous().view(-1)
+            loss = criterion(final_output, final_target)
 
-        total_loss += loss.data * final_output.size(0)
-        count += final_output.size(0)
+            total_loss += loss.data * final_output.size(0)
+            count += final_output.size(0)
 
-    val_loss = total_loss[0] / count * 1.0
-    return val_loss
+        val_loss = total_loss.item() / count * 1.0
+        return val_loss
 
 
 def train(epoch):
@@ -125,12 +126,12 @@ def train(epoch):
         loss.backward()
 
         if args.clip > 0:
-            torch.nn.utils.clip_grad_norm(model.parameters(), args.clip)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
         optimizer.step()
-        total_loss += loss.data
+        total_loss += loss.item()
 
         if batch_idx % args.log_interval == 0 and batch_idx > 0:
-            cur_loss = total_loss[0] / args.log_interval
+            cur_loss = total_loss / args.log_interval
             losses.append(cur_loss)
             elapsed = time.time() - start_time
             print('| epoch {:3d} | {:5d}/{:5d} batches | lr {:02.5f} | ms/batch {:5.2f} | '
@@ -139,13 +140,6 @@ def train(epoch):
                               elapsed * 1000 / args.log_interval, cur_loss, cur_loss / math.log(2)))
             total_loss = 0
             start_time = time.time()
-
-        # if batch % (200 * args.log_interval) == 0 and batch > 0:
-        #     vloss = evaluate(val_data)
-        #     print('-' * 89)
-        #     print('| In epoch {:3d} | valid loss {:5.3f} | '
-        #           'valid bpc {:8.3f}'.format(epoch, vloss, vloss / math.log(2)))
-        #     model.train()
 
     return sum(losses) * 1.0 / len(losses)
 

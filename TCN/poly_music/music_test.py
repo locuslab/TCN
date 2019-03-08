@@ -3,6 +3,8 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 import torch.optim as optim
+import sys
+sys.path.append("../../")
 from TCN.poly_music.model import TCN
 from TCN.poly_music.utils import data_generator
 import numpy as np
@@ -61,7 +63,7 @@ lr = args.lr
 optimizer = getattr(optim, args.optim)(model.parameters(), lr=lr)
 
 
-def evaluate(X_data):
+def evaluate(X_data, name='Eval'):
     model.eval()
     eval_idx_list = np.arange(len(X_data), dtype="int32")
     total_loss = 0.0
@@ -74,10 +76,10 @@ def evaluate(X_data):
         output = model(x.unsqueeze(0)).squeeze(0)
         loss = -torch.trace(torch.matmul(y, torch.log(output).float().t()) +
                             torch.matmul((1-y), torch.log(1-output).float().t()))
-        total_loss += loss.data[0]
+        total_loss += loss.item()
         count += output.size(0)
     eval_loss = total_loss / count
-    print("Validation/Test loss: {:.5f}".format(eval_loss))
+    print(name + " loss: {:.5f}".format(eval_loss))
     return eval_loss
 
 
@@ -97,11 +99,11 @@ def train(ep):
         output = model(x.unsqueeze(0)).squeeze(0)
         loss = -torch.trace(torch.matmul(y, torch.log(output).float().t()) +
                             torch.matmul((1 - y), torch.log(1 - output).float().t()))
-        total_loss += loss.data[0]
+        total_loss += loss.item()
         count += output.size(0)
 
         if args.clip > 0:
-            torch.nn.utils.clip_grad_norm(model.parameters(), args.clip)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
         loss.backward()
         optimizer.step()
         if idx > 0 and idx % args.log_interval == 0:
@@ -117,8 +119,8 @@ if __name__ == "__main__":
     model_name = "poly_music_{0}.pt".format(args.data)
     for ep in range(1, args.epochs+1):
         train(ep)
-        vloss = evaluate(X_valid)
-        tloss = evaluate(X_test)
+        vloss = evaluate(X_valid, name='Validation')
+        tloss = evaluate(X_test, name='Test')
         if vloss < best_vloss:
             with open(model_name, "wb") as f:
                 torch.save(model, f)

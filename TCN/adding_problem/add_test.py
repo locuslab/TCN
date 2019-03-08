@@ -2,6 +2,8 @@ import torch
 import argparse
 import torch.optim as optim
 import torch.nn.functional as F
+import sys
+sys.path.append("../../")
 from TCN.adding_problem.model import TCN
 from TCN.adding_problem.utils import data_generator
 
@@ -73,8 +75,8 @@ def train(epoch):
     model.train()
     batch_idx = 1
     total_loss = 0
-    for i in range(0, X_train.size()[0], batch_size):
-        if i + batch_size > X_train.size()[0]:
+    for i in range(0, X_train.size(0), batch_size):
+        if i + batch_size > X_train.size(0):
             x, y = X_train[i:], Y_train[i:]
         else:
             x, y = X_train[i:(i+batch_size)], Y_train[i:(i+batch_size)]
@@ -83,16 +85,16 @@ def train(epoch):
         loss = F.mse_loss(output, y)
         loss.backward()
         if args.clip > 0:
-            torch.nn.utils.clip_grad_norm(model.parameters(), args.clip)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
         optimizer.step()
         batch_idx += 1
-        total_loss += loss.data[0]
+        total_loss += loss.item()
 
         if batch_idx % args.log_interval == 0:
             cur_loss = total_loss / args.log_interval
-            processed = min(i+batch_size, X_train.size()[0])
+            processed = min(i+batch_size, X_train.size(0))
             print('Train Epoch: {:2d} [{:6d}/{:6d} ({:.0f}%)]\tLearning rate: {:.4f}\tLoss: {:.6f}'.format(
-                epoch, processed, X_train.size()[0], 100.*processed/X_train.size()[0], lr, cur_loss))
+                epoch, processed, X_train.size(0), 100.*processed/X_train.size(0), lr, cur_loss))
             total_loss = 0
 
 
@@ -100,8 +102,8 @@ def evaluate():
     model.eval()
     output = model(X_test)
     test_loss = F.mse_loss(output, Y_test)
-    print('\nTest set: Average loss: {:.6f}\n'.format(test_loss.data[0]))
-    return test_loss.data[0]
+    print('\nTest set: Average loss: {:.6f}\n'.format(test_loss.item()))
+    return test_loss.item()
 
 
 for ep in range(1, epochs+1):

@@ -2,6 +2,8 @@ import torch
 from torch.autograd import Variable
 import torch.optim as optim
 import torch.nn.functional as F
+import sys
+sys.path.append("../../")
 from TCN.mnist_pixel.utils import data_generator
 from TCN.mnist_pixel.model import TCN
 import numpy as np
@@ -80,14 +82,14 @@ def train(ep):
         loss = F.nll_loss(output, target)
         loss.backward()
         if args.clip > 0:
-            torch.nn.utils.clip_grad_norm(model.parameters(), args.clip)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
         optimizer.step()
         train_loss += loss
         steps += seq_length
         if batch_idx > 0 and batch_idx % args.log_interval == 0:
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}\tSteps: {}'.format(
                 ep, batch_idx * batch_size, len(train_loader.dataset),
-                100. * batch_idx / len(train_loader), train_loss.data[0]/args.log_interval, steps))
+                100. * batch_idx / len(train_loader), train_loss.item()/args.log_interval, steps))
             train_loss = 0
 
 
@@ -103,7 +105,7 @@ def test():
             data = data[:, :, permute]
         data, target = Variable(data, volatile=True), Variable(target)
         output = model(data)
-        test_loss += F.nll_loss(output, target, size_average=False).data[0]
+        test_loss += F.nll_loss(output, target, size_average=False).item()
         pred = output.data.max(1, keepdim=True)[1]
         correct += pred.eq(target.data.view_as(pred)).cpu().sum()
 
