@@ -18,7 +18,7 @@ Experiments are done in PyTorch. If you find this repository helpful, please cit
 
 ## Domains and Datasets
 
-**Update**: The code should be directly runnable with PyTorch 0.4.0 or above (PyTorch 1.0 strongly recommended). The older versions of PyTorch are no longer supported.
+**Update**: The code should be directly runnable with PyTorch v1.0.0 or above (PyTorch v>1.3.0 strongly recommended). The older versions of PyTorch are no longer supported.
 
 This repository contains the benchmarks to the following tasks, with details explained in each sub-directory:
 
