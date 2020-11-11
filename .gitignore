@@ -5,3 +5,5 @@ wikitext-103/
 *.log
 *.pyc
 __pycache__/
+*.py~
+*.un~

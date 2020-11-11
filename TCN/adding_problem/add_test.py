@@ -59,12 +59,12 @@ kernel_size = args.ksize
 dropout = args.dropout
 model = TCN(input_channels, n_classes, channel_sizes, kernel_size=kernel_size, dropout=dropout)
 
-if args.cuda:
-    model.cuda()
-    X_train = X_train.cuda()
-    Y_train = Y_train.cuda()
-    X_test = X_test.cuda()
-    Y_test = Y_test.cuda()
+#if args.cuda:
+#    model.cuda()
+#    X_train = X_train.cuda()
+#    Y_train = Y_train.cuda()
+#    X_test = X_test.cuda()
+#    Y_test = Y_test.cuda()
 
 lr = args.lr
 optimizer = getattr(optim, args.optim)(model.parameters(), lr=lr)
