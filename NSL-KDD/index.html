@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="GENERATOR" content="Microsoft FrontPage 6.0" />
+    <meta name="ProgId" content="FrontPage.Editor.Document" />
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <meta name="keywords" content="NSL-KDD" />
+    <title>The NSL-KDD Data Set</title>
+</head>
+<body style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; background-color: White;">
+    <div>
+        <center>
+            <table style="border-collapse: collapse; border-color: #111111; width: 1000px;" id="AutoNumber1"
+                border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr style="height: 30px;">
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 100%; height: 100%; vertical-align: middle; text-align: center;">
+                            <label style="font-family: Times New Roman; font-weight: bolder; font-size: xx-large;">
+                                The NSL-KDD Data Set</label>
+                        </td>
+                    </tr>
+                    <tr style="height: 30px;">
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 100%; height: 100%; vertical-align: middle; text-align: left;">
+                            <label style="font-family: Times New Roman; font-weight: bolder; font-size: x-large;">
+                                Abstract</label>
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;">
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 100%; text-align: justify;">
+                            <label style="font-family: Times New Roman; font-size: large;">
+                                NSL-KDD is a data set suggested to solve some of the inherent problems of the KDD'99
+                                data set which are mentioned in [1]. Although, this new version of the KDD data
+                                set still suffers from some of the problems discussed by McHugh [2] and may not
+                                be a perfect representative of existing real networks, because of the lack of public
+                                data sets for network-based IDSs, we believe it still can be applied as an effective
+                                benchmark data set to help researchers compare different intrusion detection methods.
+                                Furthermore, the number of records in the NSL-KDD train and test sets are reasonable.
+                                This advantage makes it affordable to run the experiments on the complete set without
+                                the need to randomly select a small portion. Consequently, evaluation results of
+                                different research work will be consistent and comparable.
+                                <br />
+                                <br />
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 100%; height: 100%; vertical-align: middle; text-align: left;">
+                            <label style="font-family: Times New Roman; font-weight: bolder; font-size: x-large;">
+                                Data Files</label>
+                        </td>
+                        <tr>
+                        </tr>
+                        <tr style="height: 20px;">
+                        </tr>
+                        <tr>
+                            <td style="width: 26%; text-align: left;">
+                                <a href="http://nsl.cs.unb.ca/NSL-KDD/KDDTrain+.arff" target="_blank" style="text-decoration: none;
+                                    font-family: Times New Roman; font-weight: bolder; font-size: large;">KDDTrain+.ARFF</a>
+                            </td>
+                            <td style="text-align: left;">
+                                <label style="font-family: Times New Roman; font-size: large;">
+                                    The full NSL-KDD train set with binary labels in ARFF format</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 26%; text-align: left;">
+                                <a href="http://nsl.cs.unb.ca/NSL-KDD/KDDTrain+.txt" target="_blank" style="text-decoration: none;
+                                    font-family: Times New Roman; font-weight: bolder; font-size: large;">KDDTrain+.TXT</a>
+                            </td>
+                            <td style="text-align: left;">
+                                <label style="font-family: Times New Roman; font-size: large;">
+                                    The full NSL-KDD train set including attack-type labels and difficulty level in
+                                    CSV format</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 26%; text-align: left;">
+                                <a href="http://nsl.cs.unb.ca/NSL-KDD/KDDTrain+_20Percent.arff" target="_blank" style="text-decoration: none;
+                                    font-family: Times New Roman; font-weight: bolder; font-size: large;">KDDTrain+_20Percent.ARFF</a>
+                            </td>
+                            <td style="text-align: left;">
+                                <label style="font-family: Times New Roman; font-size: large;">
+                                    A 20% subset of the KDDTrain+.arff file</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 26%; text-align: left;">
+                                <a href="http://nsl.cs.unb.ca/NSL-KDD/KDDTrain+_20Percent.txt" target="_blank" style="text-decoration: none;
+                                    font-family: Times New Roman; font-weight: bolder; font-size: large;">KDDTrain+_20Percent.TXT</a>
+                            </td>
+                            <td style="text-align: left;">
+                                <label style="font-family: Times New Roman; font-size: large;">
+                                    A 20% subset of the KDDTrain+.txt file</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 26%; text-align: left;">
+                                <a href="http://nsl.cs.unb.ca/NSL-KDD/KDDTest+.arff" target="_blank" style="text-decoration: none;
+                                    font-family: Times New Roman; font-weight: bolder; font-size: large;">KDDTest+.ARFF</a>
+                            </td>
+                            <td style="text-align: left;">
+                                <label style="font-family: Times New Roman; font-size: large;">
+                                    The full NSL-KDD test set with binary labels in ARFF format</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 26%; text-align: left;">
+                                <a href="http://nsl.cs.unb.ca/NSL-KDD/KDDTest+.txt" target="_blank" style="text-decoration: none;
+                                    font-family: Times New Roman; font-weight: bolder; font-size: large;">KDDTest+.TXT</a>
+                            </td>
+                            <td style="text-align: left;">
+                                <label style="font-family: Times New Roman; font-size: large;">
+                                    The full NSL-KDD test set including attack-type labels and difficulty level in CSV
+                                    format</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 26%; text-align: left;">
+                                <a href="http://nsl.cs.unb.ca/NSL-KDD/KDDTest-21.arff" target="_blank" style="text-decoration: none;
+                                    font-family: Times New Roman; font-weight: bolder; font-size: large;">KDDTest-21.ARFF</a>
+                            </td>
+                            <td style="text-align: left;">
+                                <label style="font-family: Times New Roman; font-size: large;">
+                                    A subset of the KDDTest+.arff file which does not include records with difficulty
+                                    level of 21 out of 21</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 26%; text-align: left;">
+                                <a href="http://nsl.cs.unb.ca/NSL-KDD/KDDTest-21.txt" target="_blank" style="text-decoration: none;
+                                    font-family: Times New Roman; font-weight: bolder; font-size: large;">KDDTest-21.TXT</a>
+                            </td>
+                            <td style="text-align: left;">
+                                <label style="font-family: Times New Roman; font-size: large;">
+                                    A subset of the KDDTest+.txt file which does not include records with difficulty
+                                    level of 21 out of 21</label>
+                            </td>
+                        </tr>
+                        <td colspan="2">
+                            <label>
+                                <br />
+                                <br />
+                            </label>
+                        </td>
+                        <tr>
+                            <td colspan="2" style="width: 100%; height: 100%; vertical-align: middle; text-align: left;">
+                                <label style="font-family: Times New Roman; font-weight: bolder; font-size: x-large;">
+                                    Improvements to the KDD'99 data set</label>
+                            </td>
+                        </tr>
+                        <tr style="height: 20px;">
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="width: 100%; text-align: justify;">
+                                <label style="font-family: Times New Roman; font-size: large;">
+                                    The NSL-KDD data set has the following advantages over the original KDD data set:
+                                </label>
+                                <ul style="font-family: Times New Roman; font-size: large;">
+                                    <li style="list-style-type: square">It does not include redundant records in the train
+                                        set, so the classifiers will not be biased towards more frequent records.</li><br />
+                                    <li style="list-style-type: square">There is no duplicate records in the proposed test
+                                        sets; therefore, the performance of the learners are not biased by the methods which
+                                        have better detection rates on the frequent records.</li><br />
+                                    <li style="list-style-type: square">The number of selected records from each difficultylevel
+                                        group is inversely proportional to the percentage of records in the original KDD
+                                        data set. As a result, the classification rates of distinct machine learning methods
+                                        vary in a wider range, which makes it more efficient to have an accurate evaluation
+                                        of different learning techniques.</li><br />
+                                    <li style="list-style-type: square">The number of records in the train and test sets
+                                        are reasonable, which makes it affordable to run the experiments on the complete
+                                        set without the need to randomly select a small portion. Consequently, evaluation
+                                        results of different research works will be consistent and comparable.</li><br />
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="width: 100%; height: 100%; vertical-align: middle; text-align: left;">
+                                <label style="font-family: Times New Roman; font-weight: bolder; font-size: x-large;">
+                                    Statistical Observations</label>
+                            </td>
+                        </tr>
+                        <tr style="height: 20px;">
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="width: 100%; text-align: justify;">
+                                <label style="font-family: Times New Roman; font-size: large;">
+                                    One of the most important deficiencies in the KDD data set is the huge number of
+                                    redundant records, which causes the learning algorithms to be biased towards the
+                                    frequent records, and thus prevent them from learning unfrequent records which are
+                                    usually more harmful to networks such as U2R and R2L attacks. In addition, the existence
+                                    of these repeated records in the test set will cause the evaluation results to be
+                                    biased by the methods which have better detection rates on the frequent records.
+                                </label>
+                            </td>
+                        </tr>
+                    </tr>
+                </tbody>
+            </table>
+            <table style="border-collapse: collapse; border-color: #111111; width: 1000px;" id="Table2"
+                border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr style="height: 20px;">
+                    </tr>
+                    <tr>
+                        <td style="width: 30px;">
+                        </td>
+                        <td style="width: 470px;">
+                            <table style="border-collapse: collapse; border-color: #111111;" id="Table3" border="1"
+                                cellpadding="1" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 80px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                            </label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Original Records</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Distinct Records</label>
+                                        </td>
+                                        <td style="width: 110px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Reduction Rate</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 80px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Attacks</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                3,925,650</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                262,178</label>
+                                        </td>
+                                        <td style="width: 110px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                93.32%</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 80px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Normal</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                972,781</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                812,814</label>
+                                        </td>
+                                        <td style="width: 110px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                16.44%</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 80px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Total</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                4,898,431</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                1,074,992</label>
+                                        </td>
+                                        <td style="width: 110px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                78.05%</label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td style="width: 30px;">
+                        </td>
+                        <td style="width: 470px; text-align: justify;">
+                            <table style="border-collapse: collapse; border-color: #111111;" id="Table1" border="1"
+                                cellpadding="1" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 80px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                            </label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Original Records</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Distinct Records</label>
+                                        </td>
+                                        <td style="width: 110px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Reduction Rate</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 80px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Attacks</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                250,436</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                29,378</label>
+                                        </td>
+                                        <td style="width: 110px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                88.26%</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 80px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Normal</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                60,591</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                47,911</label>
+                                        </td>
+                                        <td style="width: 110px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                20.92%</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 80px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                                Total</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                311,027</label>
+                                        </td>
+                                        <td style="width: 120px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                77,289</label>
+                                        </td>
+                                        <td style="width: 110px; text-align: center;">
+                                            <label style="font-family: Times New Roman; font-size: medium;">
+                                                75.15%</label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr style="height: 40px;">
+                        <td style="width: 30px;">
+                        </td>
+                        <td style="width: 470px; text-align: center;">
+                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                Statistics of redundant records in the KDD train set</label>
+                        </td>
+                        <td style="width: 30px;">
+                        </td>
+                        <td style="width: 470px; text-align: center;">
+                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                Statistics of redundant records in the KDD test set</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table style="border-collapse: collapse; border-color: #111111; width: 1000px;" id="Table4"
+                border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr style="height: 30px;">
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="width: 100%; text-align: justify;">
+                            <label style="font-family: Times New Roman; font-size: large;">
+                                In addition, we analyzed the difficulty level of the records in KDD data set. Surprisingly,
+                                about 98% of the records in the train set and 86% of the records in the test set
+                                were correctly classified with all the 21 learners.<br />
+                            </label>
+                            <label style="font-family: Times New Roman; font-size: large;">
+                                In order to perform our experiments, we randomly created three smaller subsets of
+                                the KDD train set each of which included fifty thousand records of information.
+                                Each of the learners where trained over the created train sets. We then employed
+                                the 21 learned machines (7 learners, each trained 3 times) to label the records
+                                of the entire KDD train and test sets, which provides us with 21 predicated labels
+                                for each record. Further, we annotated each record of the data set with a <i>#successfulPrediction</i>
+                                value, which was initialized to zero. Now, since the KDD data set provides the correct
+                                label for each record, we compared the predicated label of each record given by
+                                a specific learner with the actual label, where we incremented <i>#successfulPrediction</i>
+                                by one if a match was found. Through this process, we calculated the number of learners
+                                that were able to correctly label that given record. The highest value for <i>#successfulPrediction</i>
+                                is 21, which conveys the fact that all learners were able to correctly predict the
+                                label of that record.
+                            </label>
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;">
+                    </tr>
+                    <tr>
+                        <td style="width: 30px;">
+                        </td>
+                        <td style="width: 470px;">
+                            <img src="KDDTrain1.jpg" border="0" width="430" alt="The distribution of #successfulPrediction values for the
+                                KDD train set records" />
+                        </td>
+                        <td style="width: 30px;">
+                        </td>
+                        <td style="width: 470px; text-align: justify;">
+                            <img src="KDDTest1.jpg" border="0" width="430" alt="The distribution of #successfulPrediction values for the
+                                KDD test set records" />
+                        </td>
+                    </tr>
+                    <tr style="height: 40px;">
+                        <td style="width: 30px;">
+                        </td>
+                        <td style="width: 470px; text-align: center;">
+                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                The distribution of <i>#successfulPrediction</i> values for<br />the KDD train set records</label>
+                        </td>
+                        <td style="width: 30px;">
+                        </td>
+                        <td style="width: 470px; text-align: center;">
+                            <label style="font-family: Times New Roman; font-size: medium; font-weight: bolder;">
+                                The distribution of <i>#successfulPrediction</i> values for<br />the KDD test set records</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table style="border-collapse: collapse; border-color: #111111; width: 1000px;" id="Table5"
+                border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr style="height: 30px;">
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 100%; height: 100%; vertical-align: middle; text-align: left;">
+                            <label style="font-family: Times New Roman; font-weight: bolder; font-size: x-large;">
+                                Refrences</label>
+                        </td>
+                    </tr>
+                    <tr style="height: 20px;">
+                    </tr>
+                    <tr>
+                        <td style="width: 100%; text-align: justify;">
+                            <label style="font-family: Times New Roman; font-size: large;">
+                                [1] M. Tavallaee, E. Bagheri, W. Lu, and A. Ghorbani, “A Detailed Analysis of the
+                                KDD CUP 99 Data Set,” <i>Submitted to Second IEEE Symposium on Computational Intelligence
+                                    for Security and Defense Applications (CISDA)</i>, 2009.
+                                <br />
+                                <br />
+                                [2] J. McHugh, “Testing intrusion detection systems: a critique of the 1998 and
+                                1999 darpa intrusion detection system evaluations as performed by lincoln laboratory,”
+                                <i>ACM Transactions on Information and System Security</i>, vol. 3, no. 4, pp. 262–294,
+                                2000.
+                            </label>
+                        </td>
+                    </tr>
+                    <tr style="height: 70px;">
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
+</body>
+</html>
