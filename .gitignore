@@ -8,3 +8,6 @@ __pycache__/
 *.py~
 *.un~
 *checkpoint.ipynb
+*.swp
+*ubyte
+*.gz
