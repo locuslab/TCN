@@ -59,9 +59,6 @@ channel_sizes = [args.nhid] * args.levels
 kernel_size = args.ksize
 model = TCN(input_channels, n_classes, channel_sizes, kernel_size=kernel_size, dropout=args.dropout)
 
-if args.cuda:
-    model.cuda()
-    permute = permute.cuda()
 
 lr = args.lr
 optimizer = getattr(optim, args.optim)(model.parameters(), lr=lr)
@@ -72,7 +69,6 @@ def train(ep):
     train_loss = 0
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
-        if args.cuda: data, target = data.cuda(), target.cuda()
         data = data.view(-1, input_channels, seq_length)
         if args.permute:
             data = data[:, :, permute]
@@ -99,8 +95,6 @@ def test():
     correct = 0
     with torch.no_grad():
         for data, target in test_loader:
-            if args.cuda:
-                data, target = data.cuda(), target.cuda()
             data = data.view(-1, input_channels, seq_length)
             if args.permute:
                 data = data[:, :, permute]
