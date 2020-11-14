@@ -7,3 +7,4 @@ wikitext-103/
 __pycache__/
 *.py~
 *.un~
+*checkpoint.ipynb
