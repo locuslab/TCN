@@ -19,6 +19,7 @@ Target word: miscarriage
 
 See `data_generator` in `utils.py`. You will need to download the lambada dataset from [here](http://clic.cimec.unitn.it/lambada/) and put it under director `./data/lambada` (or other paths specified by `--data` flag). 
 
+**(2022/3 update)**: The official LAMBADA dataset seems to have slightly modified the vocabulary list. The old vocab list that this repo uses is now in `./data/lambada_vocabular_sorted.txt`. However, if you hope to use the new vocab list, download from the official link above and extract the 112,746 words contained in `lambada-vocab-2.txt`.
 
 ### Note
 
